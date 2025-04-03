@@ -32,4 +32,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/empleado', action: function () {
+        return Inertia::render('Empleado');
+    })->name('empleado.index');
 });
+
+use App\Http\Controllers\PermisoRolModuloController;
+
+Route::get('permiso-rol-modulo', [PermisoRolModuloController::class, 'index']);
+Route::post('permiso-rol-modulo', [PermisoRolModuloController::class, 'store']);
+Route::get('permiso-rol-modulo/{rol_id}/{modulo_id}/{permiso_id}', [PermisoRolModuloController::class, 'show']);
+Route::put('permiso-rol-modulo/{rol_id}/{modulo_id}/{permiso_id}', [PermisoRolModuloController::class, 'update']);
+Route::delete('permiso-rol-modulo/{rol_id}/{modulo_id}/{permiso_id}', [PermisoRolModuloController::class, 'destroy']);

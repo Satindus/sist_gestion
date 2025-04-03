@@ -22,4 +22,12 @@ class Permiso extends Model
             ->withPivot('modulo_id')
             ->withTimestamps();
     }
+    
+    public function modulos()
+    {
+        return $this->belongsToMany(Modulo::class, 'permiso_rol_modulo')
+            ->withPivot('rol_id')
+            ->withTimestamps();
+    }
+    
 }
